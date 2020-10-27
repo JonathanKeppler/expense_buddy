@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "588306883300",
+    "firebase_url": "https://expense-buddy-8c526.firebaseio.com",
+    "project_id": "expense-buddy-8c526",
+    "storage_bucket": "expense-buddy-8c526.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588306883300:android:92a10c7787879e2e8d42f1",
+        "android_client_info": {
+          "package_name": "com.jkdevstudios.expense_buddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588306883300-0m557gs38grvvaj5n2fs6drj516ppknr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq2dn9jtMLh7mtAyxkCPUBO9r_EmAqJKs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588306883300-0m557gs38grvvaj5n2fs6drj516ppknr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
