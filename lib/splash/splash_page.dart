@@ -10,8 +10,8 @@ class SplashPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Image.asset(
-          'assets/bloc_logo_small.png',
-          key: const Key('splash_bloc_image'),
+          'assets/logo.png',
+          key: const Key('logo_image'),
           width: 150,
         ),
       ),
