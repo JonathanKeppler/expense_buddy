@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expense_repository/expense_repository.dart';
 import 'entities/entities.dart';
-import 'models/expense.dart';
 
 class FirebaseExpenseRepository implements ExpenseRepository {
   final expenseCollection = FirebaseFirestore.instance.collection('Expenses');

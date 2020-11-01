@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'models/expense.dart';
+import 'models/models.dart';
 
 abstract class ExpenseRepository {
   Future<void> addExpense(Expense expense);
