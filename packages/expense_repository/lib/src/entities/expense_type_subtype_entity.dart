@@ -1,17 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
-class ExpenseTypeEntity extends Equatable {
+class ExpenseTypeSubTypeEntity extends Equatable {
   final String id;
-  final String type;
+  final String subType;
   final String createdBy;
   final DateTime createdOn;
   final String modifiedBy;
   final DateTime modifiedOn;
 
-  const ExpenseTypeEntity(
+  const ExpenseTypeSubTypeEntity(
     this.id,
-    this.type,
+    this.subType,
     this.createdBy,
     this.createdOn,
     this.modifiedBy,
@@ -21,7 +21,7 @@ class ExpenseTypeEntity extends Equatable {
   @override
   List<Object> get props => [
     id,
-    type,
+    subType,
     createdBy,
     createdOn,
     modifiedBy,
@@ -30,8 +30,8 @@ class ExpenseTypeEntity extends Equatable {
 
   @override
   String toString() {
-    return '''ExpenseTypeEntity { id: $id, 
-    type: $type , 
+    return '''ExpenseTypeSubTypeEntity { id: $id, 
+    subType: $subType , 
     createdBy: $createdBy,
     createdOn: $createdOn, 
     modifiedBy: $modifiedBy,  
@@ -41,7 +41,7 @@ class ExpenseTypeEntity extends Equatable {
     Map<String, Object> toJson() {
     return {
       "id": id,
-      "type": type,
+      "subType": subType,
       "createdBy": createdBy,
       "createdOn": createdOn,
       "modifiedBy": modifiedBy,
@@ -49,10 +49,10 @@ class ExpenseTypeEntity extends Equatable {
     };
   }
 
-  static ExpenseTypeEntity fromJson(Map<String, Object> json) {
-    return ExpenseTypeEntity(
+  static ExpenseTypeSubTypeEntity fromJson(Map<String, Object> json) {
+    return ExpenseTypeSubTypeEntity(
       json["id"] as String,
-      json["type"] as String,
+      json["subType"] as String,
       json["createdBy"] as String,
       json["createdOn"] as DateTime,
       json["modifiedBy"] as String,
@@ -60,10 +60,10 @@ class ExpenseTypeEntity extends Equatable {
     );
   }
 
-  static ExpenseTypeEntity fromSnapshot(DocumentSnapshot snap) {
-    return ExpenseTypeEntity(
+  static ExpenseTypeSubTypeEntity fromSnapshot(DocumentSnapshot snap) {
+    return ExpenseTypeSubTypeEntity(
       snap.id,
-      snap['type'],
+      snap['subType'],
       snap['createdBy'],
       snap['createdOn'],
       snap['modifiedBy'],
@@ -73,7 +73,7 @@ class ExpenseTypeEntity extends Equatable {
 
   Map<String, Object> toDocument() {
     return {
-      "type": type,
+      "subType": subType,
       "createdBy": createdBy,
       "createdOn": createdOn,
       "modifiedBy": modifiedBy,
