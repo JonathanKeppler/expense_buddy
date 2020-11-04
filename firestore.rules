@@ -5,12 +5,17 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
-    match /Expenses/{expense} {
-      allow read: if request.auth != null && resource.data.Users.hasAny([request.auth.uid]);
+    match /expenses/{expense} {
+      allow read: if (request.auth != null && resource.data.users.hasAny([request.auth.uid]));
     }
 
-    match /ExpenseTypes/{expenseType} {
-      allow read: if true;
+    match /expenseTypes/{expenseType} {
+      allow read: if (!resource.data.isScoped) ||
+        (resource.data.scopedUsers.hasAny([request.auth.uid]));
+    }
+
+    match /users/{userId} {
+      allow read, write: if (request.auth.uid == userId);
     }
     
   }

@@ -4,7 +4,7 @@ import 'package:expense_repository/expense_repository.dart';
 import 'entities/entities.dart';
 
 class FirebaseExpenseRepository implements ExpenseRepository {
-  final expenseCollection = FirebaseFirestore.instance.collection('Expenses');
+  final expenseCollection = FirebaseFirestore.instance.collection('expenses');
 
   @override
   Future<void> addExpense(Expense expense) {
