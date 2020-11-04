@@ -66,6 +66,19 @@ describe("Expense Buddy", () => {
         await firebase.assertFails(testRead.get());
     });
 
+    it("Can create a new expenseType if user is logged in", async() => {
+        const db = getFirestore(myAuth);
+        const testDoc = db.collection("expenseTypes").doc("test_doc");
+        await firebase.assertSucceeds(testDoc.set({foo: "bar"}));
+    });
+
+    it("Can't create a new expenseType if user is not logged in", async() => {
+        const db = getFirestore(null);
+        const testDoc = db.collection("expenseTypes").doc("test_doc");
+        await firebase.assertFails(testDoc.set({foo: "bar"}));
+    });
+
+
 
     /***************
      **   USERS   **
