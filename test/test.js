@@ -21,7 +21,6 @@ beforeEach(async () => {
 
 describe("Expense Buddy", () => {
 
-
     /*********************
      **  EXPENSE TYPES  **
      *********************/
@@ -90,6 +89,7 @@ describe("Expense Buddy", () => {
         const testDoc = db.collection("expenseTypes").doc("test_doc");
         await firebase.assertSucceeds(testDoc.set({scopedUsers: [myId]}));
     });
+
 
     /*****************
      **  SUB TYPES  **
@@ -200,6 +200,7 @@ describe("Expense Buddy", () => {
         const setupSubType = db.collection("expenseTypes").doc(exTypeId).collection("expenseTypeSubTypes").doc(subTypeId);
         await firebase.assertFails(setupSubType.set({isScoped: false}));
     });
+    
 
     /***************
      **   USERS   **
