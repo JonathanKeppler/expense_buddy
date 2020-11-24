@@ -12,6 +12,12 @@ service cloud.firestore {
 
       allow create: if request.auth != null &&
         request.auth.uid in request.resource.data.users;
+
+      allow update: if request.auth != null &&
+        request.auth.uid in resource.data.users;
+
+      allow delete: if request.auth != null &&
+        request.auth.uid in resource.data.users;
     }
 
     match /expenseTypes/{expenseType} {
@@ -24,6 +30,10 @@ service cloud.firestore {
       allow update: if request.auth != null &&
         request.auth.uid in resource.data.scopedUsers;
 
+      allow delete: if resource.data.isScoped == true &&
+        request.auth != null &&
+        request.auth.uid in resource.data.scopedUsers
+
       match /expenseTypeSubTypes/{expenseTypeSubType} {
         allow read: if (get(/databases/$(database)/documents/expenseTypes/$(expenseType)).data.isScoped == false ||
           request.auth.uid in get(/databases/$(database)/documents/expenseTypes/$(expenseType)).data.scopedUsers) &&
@@ -31,7 +41,14 @@ service cloud.firestore {
           request.auth.uid in resource.data.scopedUsers);
 
         allow create: if (get(/databases/$(database)/documents/expenseTypes/$(expenseType)).data.isScoped == false ||
-          request.auth.uid in get(/databases/$(database)/documents/expenseTypes/$(expenseType)).data.scopedUsers)
+          request.auth.uid in get(/databases/$(database)/documents/expenseTypes/$(expenseType)).data.scopedUsers) &&
+          request.auth.uid != null &&
+          request.auth.uid in request.resource.data.scopedUsers;
+
+        allow update: if (get(/databases/$(database)/documents/expenseTypes/$(expenseType)).data.isScoped == false ||
+          request.auth.uid in get(/databases/$(database)/documents/expenseTypes/$(expenseType)).data.scopedUsers) &&
+          request.auth.uid != null &&
+          request.auth.uid in resource.data.scopedUsers;
       }
     }
 
