@@ -6,9 +6,6 @@ const getAdminFirestore = () => {return helper.getAdminFirestore()};
 
 describe("Expense Sub Types", () => {
 
-     /*****************
-     **  SUB TYPES  **
-     *****************/
     it("Can read subTypes if parent expenseType is not scoped and subType is not scoped", async() => {
         const admin = getAdminFirestore();
         const exTypeId = "gobal_expense_type";
