@@ -129,7 +129,6 @@ describe("Expense Sub Types", () => {
         await firebase.assertFails(setupSubType.set({isScoped: true, scopedUsers: [theirId]}));
     });
 
-
     it("Can't create a new expenseType if user is not logged in", async() => {
         const db = getFirestore(null);
         const testDoc = db.collection("expenseTypes").doc("test_doc");
