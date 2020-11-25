@@ -1,8 +1,9 @@
 const assert = require('assert');
+const settings = require("../appconfig.settings.json")
 const firebase = require('@firebase/testing');
 const { isContext } = require('vm');
 
-const MY_PROJECT_ID = "expense-buddy-8c526";
+const MY_PROJECT_ID = settings.projectId;
 const myId = "user_abc";
 const theirId = "user_xyz";
 const invalidId = "user_invalid";

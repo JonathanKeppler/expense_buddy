@@ -8,6 +8,7 @@
 .buildlog/
 .history
 .svn/
+appconfig.settings.json
 
 # IntelliJ related
 *.iml
