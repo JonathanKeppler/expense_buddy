@@ -3,15 +3,15 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     function hasOnlyLinkedUsers(authId) {
-      return request.resource.data.scopedUsers.hasOnly(get(/databases/$(database)/documents/users/$(authId)).data.linkedUsers.concat([request.auth.uid]));
+      return request.resource.data.scopedUsers.hasOnly(get(/databases/$(database)/documents/users/$(authId)).data.linkedUsers.concat([authId]));
     }
 
     function isAuthenticated(auth) {
-      return request.auth != null;
+      return auth != null;
     }
 
     function isScopedToUser(authId) {
-      return request.auth.uid in resource.data.scopedUsers;
+      return authId in resource.data.scopedUsers;
     }
 
     function isScopedUsersUnchanged() {
@@ -31,7 +31,7 @@ service cloud.firestore {
         
 
       allow update: if isAuthenticated(request.auth) &&
-        isScopedToUser(request.auth.id) &&
+        isScopedToUser(request.auth.uid) &&
         isScopedUsersUnchanged();
 
       allow delete: if isAuthenticated(request.auth) &&
@@ -41,25 +41,25 @@ service cloud.firestore {
     match /expenseTypes/{expenseType} {
       allow read: if isAuthenticated(request.auth) &&
         (!resource.data.isScoped ||
-          isScopedToUser(request.auth.id));
+          isScopedToUser(request.auth.uid));
 
       allow create: if isAuthenticated(request.auth) &&
         hasOnlyLinkedUsers(request.auth.uid);
 
       allow update: if isAuthenticated(request.auth) &&
-        isScopedToUser(request.auth.id) &&
+        isScopedToUser(request.auth.uid) &&
         hasOnlyLinkedUsers(request.auth.uid) &&
         isScopedUsersUnchanged();
 
       allow delete: if resource.data.isScoped == true &&
         isAuthenticated(request.auth) &&
-        isScopedToUser(request.auth.id)
+        isScopedToUser(request.auth.uid)
 
       match /expenseTypeSubTypes/{expenseTypeSubType} {
         allow read: if (get(/databases/$(database)/documents/expenseTypes/$(expenseType)).data.isScoped == false ||
           request.auth.uid in get(/databases/$(database)/documents/expenseTypes/$(expenseType)).data.scopedUsers) &&
           (resource.data.isScoped == false ||
-            isScopedToUser(request.auth.id));
+            isScopedToUser(request.auth.uid));
 
         allow create: if (get(/databases/$(database)/documents/expenseTypes/$(expenseType)).data.isScoped == false ||
           request.auth.uid in get(/databases/$(database)/documents/expenseTypes/$(expenseType)).data.scopedUsers) &&
@@ -69,7 +69,7 @@ service cloud.firestore {
         allow update: if (get(/databases/$(database)/documents/expenseTypes/$(expenseType)).data.isScoped == false ||
           request.auth.uid in get(/databases/$(database)/documents/expenseTypes/$(expenseType)).data.scopedUsers) &&
           isAuthenticated(request.auth) &&
-          isScopedToUser(request.auth.id) &&
+          isScopedToUser(request.auth.uid) &&
           isScopedUsersUnchanged();
       }
     }
