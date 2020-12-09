@@ -8,6 +8,7 @@ class ExpenseEntity extends Equatable {
   final String expenseTypeSubType;
   final DateTime incurredOn;
   final String location;
+  final List<String> scopedUsers;
   final String createdBy;
   final DateTime createdOn;
   final String modifiedBy;
@@ -20,6 +21,7 @@ class ExpenseEntity extends Equatable {
     this.expenseTypeSubType,
     this.incurredOn,
     this.location,
+    this.scopedUsers,
     this.createdBy,
     this.createdOn,
     this.modifiedBy,
@@ -34,6 +36,7 @@ class ExpenseEntity extends Equatable {
     expenseTypeSubType,
     incurredOn,
     location,
+    scopedUsers,
     createdBy,
     createdOn,
     modifiedBy,
@@ -47,6 +50,8 @@ class ExpenseEntity extends Equatable {
     expenseType: $expenseType, 
     expenseTypeSubType: $expenseTypeSubType, 
     incurredOn: $incurredOn, 
+    location: $location,
+    scopedUsers: $scopedUsers,
     createdBy: $createdBy,
     createdOn: $createdOn, 
     modifiedBy: $modifiedBy,  
@@ -61,6 +66,7 @@ class ExpenseEntity extends Equatable {
       "expenseTypeSubType": expenseTypeSubType,
       "incurredOn": incurredOn,
       "location": location,
+      "scopedUsers": scopedUsers,
       "createdBy": createdBy,
       "createdOn": createdOn,
       "modifiedBy": modifiedBy,
@@ -76,6 +82,7 @@ class ExpenseEntity extends Equatable {
       json["expenseTypeSubType"] as String,
       json["incurredOn"] as DateTime,
       json["location"] as String,
+      json["scopedUsers"] as List<String>,
       json["createdBy"] as String,
       json["createdOn"] as DateTime,
       json["modifiedBy"] as String,
@@ -91,6 +98,7 @@ class ExpenseEntity extends Equatable {
       snap['expenseTypeSubType'],
       snap['incurredOn'],
       snap['location'],
+      snap['scopedUsers'],
       snap['createdBy'],
       snap['createdOn'],
       snap['modifiedBy'],
@@ -105,6 +113,7 @@ class ExpenseEntity extends Equatable {
       "expenseTypeSubType": expenseTypeSubType,
       "incurredOn": incurredOn,
       "location": location,
+      "scopedUsers": scopedUsers,
       "createdBy": createdBy,
       "createdOn": createdOn,
       "modifiedBy": modifiedBy,

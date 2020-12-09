@@ -1,21 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
-class ExpenseTypeEntity extends Equatable {
+class UserEntity extends Equatable {
   final String id;
-  final bool isScoped;
-  final String type;
-  final List<String> scopedUsers;
+  final String email;
+  final String firstName;
+  final String lastName;
+  final List<String> linkedUsers;
   final String createdBy;
   final DateTime createdOn;
   final String modifiedBy;
   final DateTime modifiedOn;
 
-  const ExpenseTypeEntity(
+  const UserEntity(
     this.id,
-    this.isScoped,
-    this.type,
-    this.scopedUsers,
+    this.email,
+    this.firstName,
+    this.lastName,
+    this.linkedUsers,
     this.createdBy,
     this.createdOn,
     this.modifiedBy,
@@ -25,9 +27,10 @@ class ExpenseTypeEntity extends Equatable {
   @override
   List<Object> get props => [
     id,
-    isScoped,
-    type,
-    scopedUsers,
+    email,
+    firstName,
+    lastName,
+    linkedUsers,
     createdBy,
     createdOn,
     modifiedBy,
@@ -36,10 +39,11 @@ class ExpenseTypeEntity extends Equatable {
 
   @override
   String toString() {
-    return '''ExpenseTypeEntity { id: $id, 
-    type: $type,
-    isScoped: $isScoped,
-    scopedUsers: $scopedUsers,
+    return '''UserEntity { id: $id, 
+    email: $email,
+    firstName: $firstName,
+    lastName: $lastName,
+    linkedUsers: $linkedUsers,
     createdBy: $createdBy,
     createdOn: $createdOn, 
     modifiedBy: $modifiedBy,  
@@ -49,9 +53,10 @@ class ExpenseTypeEntity extends Equatable {
     Map<String, Object> toJson() {
     return {
       "id": id,
-      "isScoped": isScoped,
-      "type": type,
-      "scopedUsers": scopedUsers,
+      "email": email,
+      "firstName": firstName,
+      "lastName": lastName,
+      "linkedUsers": linkedUsers,
       "createdBy": createdBy,
       "createdOn": createdOn,
       "modifiedBy": modifiedBy,
@@ -59,12 +64,13 @@ class ExpenseTypeEntity extends Equatable {
     };
   }
 
-  static ExpenseTypeEntity fromJson(Map<String, Object> json) {
-    return ExpenseTypeEntity(
+  static UserEntity fromJson(Map<String, Object> json) {
+    return UserEntity(
       json["id"] as String,
-      json["isScoped"] as bool,
-      json["type"] as String,
-      json["scopedUsers"] as List<String>,
+      json["email"] as String,
+      json["firstName"] as String,
+      json["lastName"] as String,
+      json["linkedUsers"] as List<String>,
       json["createdBy"] as String,
       json["createdOn"] as DateTime,
       json["modifiedBy"] as String,
@@ -72,12 +78,13 @@ class ExpenseTypeEntity extends Equatable {
     );
   }
 
-  static ExpenseTypeEntity fromSnapshot(DocumentSnapshot snap) {
-    return ExpenseTypeEntity(
+  static UserEntity fromSnapshot(DocumentSnapshot snap) {
+    return UserEntity(
       snap.id,
-      snap['isScoped'],
-      snap['type'],
-      snap['scopedUsers'],
+      snap['email'],
+      snap['firstName'],
+      snap['lastName'],
+      snap['linkedUsers'],
       snap['createdBy'],
       snap['createdOn'],
       snap['modifiedBy'],
@@ -87,9 +94,10 @@ class ExpenseTypeEntity extends Equatable {
 
   Map<String, Object> toDocument() {
     return {
-      "isScoped": isScoped,
-      "type": type,
-      "scopedUsers": scopedUsers,
+      "email": email,
+      "firstName": firstName,
+      "lastName": lastName,
+      "linkedUsers": linkedUsers,
       "createdBy": createdBy,
       "createdOn": createdOn,
       "modifiedBy": modifiedBy,

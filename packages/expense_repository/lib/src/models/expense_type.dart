@@ -5,7 +5,9 @@ import '../entities/entities.dart';
 @immutable
 class ExpenseType {
   final String id;
+  final bool isScoped;
   final String type;
+  final List<String> scopedUsers;
   final String createdBy;
   final DateTime createdOn;
   final String modifiedBy;
@@ -13,7 +15,9 @@ class ExpenseType {
 
   ExpenseType(
     this.id,
+    this.isScoped,
     this.type,
+    this.scopedUsers,
     this.createdBy,
     this.createdOn,
     this.modifiedBy,
@@ -21,14 +25,18 @@ class ExpenseType {
 
   ExpenseType copyWith(
       {String id,
+      Bool isScoped,
       String type,
+      List<String> scopedUsers,
       String createdBy,
       DateTime createdOn,
       String modifiedBy,
       DateTime modifiedOn}) {
     return ExpenseType(
         id ?? this.id,
+        isScoped ?? this.isScoped,
         type ?? this.type,
+        scopedUsers ?? this.scopedUsers,
         createdBy ?? this.createdBy,
         createdOn ?? this.createdOn,
         modifiedBy ?? this.modifiedBy,
@@ -44,7 +52,9 @@ class ExpenseType {
       other is ExpenseType &&
           runtimeType == other.runtimeType &&
           id == other.id &&
+          isScoped == other.isScoped &&
           type == other.type &&
+          scopedUsers == other.scopedUsers &&
           createdBy == other.createdBy &&
           createdOn == other.createdOn &&
           modifiedBy == other.modifiedBy &&
@@ -52,18 +62,22 @@ class ExpenseType {
 
   @override
   String toString() {
-    return '''ExpenseType { id: $id, 
-      type: $type 
-      createdBy: $createdBy 
-      createdOn: $createdOn 
-      modifiedBy: $modifiedBy 
+    return '''ExpenseType { id: $id,
+      isScoped: $isScoped,
+      type: $type,
+      scopedUsers: $scopedUsers, 
+      createdBy: $createdBy, 
+      createdOn: $createdOn, 
+      modifiedBy: $modifiedBy, 
       modifiedOn: $modifiedOn }''';
   }
 
   ExpenseTypeEntity toEntity() {
     return ExpenseTypeEntity(
         id,
+        isScoped,
         type,
+        scopedUsers,
         createdBy,
         createdOn,
         modifiedBy,
@@ -74,7 +88,9 @@ class ExpenseType {
   static ExpenseType fromEntity(ExpenseTypeEntity entity) {
     return ExpenseType(
       entity.id,
+      entity.isScoped,
       entity.type,
+      entity.scopedUsers,
       entity.createdBy,
       entity.createdOn,
       entity.modifiedBy,

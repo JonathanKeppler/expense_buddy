@@ -10,6 +10,7 @@ class Expense {
   final String expenseTypeSubType;
   final DateTime incurredOn;
   final String location;
+  final List<String> scopedUsers;
   final String createdBy;
   final DateTime createdOn;
   final String modifiedBy;
@@ -22,6 +23,7 @@ class Expense {
     this.expenseTypeSubType,
     this.incurredOn,
     this.location,
+    this.scopedUsers,
     this.createdBy,
     this.createdOn,
     this.modifiedBy,
@@ -34,6 +36,7 @@ class Expense {
       String expenseTypeSubType,
       DateTime incurredOn,
       String location,
+      List<String> scopedUsers,
       String createdBy,
       DateTime createdOn,
       String modifiedBy,
@@ -45,6 +48,7 @@ class Expense {
         expenseTypeSubType ?? this.expenseTypeSubType,
         incurredOn ?? this.incurredOn,
         location ?? this.location,
+        scopedUsers ?? this.scopedUsers,
         createdBy ?? this.createdBy,
         createdOn ?? this.createdOn,
         modifiedBy ?? this.modifiedBy,
@@ -64,6 +68,7 @@ class Expense {
           expenseTypeSubType == other.expenseTypeSubType &&
           incurredOn == other.incurredOn &&
           location == other.location &&
+          scopedUsers == other.scopedUsers &&
           createdBy == other.createdBy &&
           createdOn == other.createdOn &&
           modifiedBy == other.modifiedBy &&
@@ -77,6 +82,7 @@ class Expense {
     expenseTypeSubType: $expenseTypeSubType, 
     incurredOn: $incurredOn, 
     location: $location,
+    scopedUsers: $scopedUsers,
     createdBy: $createdBy,
     createdOn: $createdOn,
     modifiedBy: $modifiedBy, 
@@ -91,6 +97,7 @@ class Expense {
         expenseTypeSubType,
         incurredOn,
         location,
+        scopedUsers,
         createdBy,
         createdOn,
         modifiedBy,
@@ -105,6 +112,7 @@ class Expense {
       entity.expenseTypeSubType,
       entity.incurredOn,
       entity.location,
+      entity.scopedUsers,
       entity.createdBy,
       entity.createdOn,
       entity.modifiedBy,

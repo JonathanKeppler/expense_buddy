@@ -5,6 +5,8 @@ import '../entities/entities.dart';
 @immutable
 class ExpenseTypeSubType {
   final String id;
+  final bool isScoped;
+  final List<String> scopedUsers;
   final String subType;
   final String createdBy;
   final DateTime createdOn;
@@ -13,6 +15,8 @@ class ExpenseTypeSubType {
 
   ExpenseTypeSubType(
     this.id,
+    this.isScoped,
+    this.scopedUsers,
     this.subType,
     this.createdBy,
     this.createdOn,
@@ -21,6 +25,8 @@ class ExpenseTypeSubType {
 
   ExpenseTypeSubType copyWith(
       {String id,
+      bool isScoped,
+      List<String> scopedUsers,
       String subType,
       String createdBy,
       DateTime createdOn,
@@ -28,6 +34,8 @@ class ExpenseTypeSubType {
       DateTime modifiedOn}) {
     return ExpenseTypeSubType(
         id ?? this.id,
+        isScoped ?? this.isScoped,
+        scopedUsers ?? this.scopedUsers,
         subType ?? this.subType,
         createdBy ?? this.createdBy,
         createdOn ?? this.createdOn,
@@ -44,6 +52,8 @@ class ExpenseTypeSubType {
       other is ExpenseTypeSubType &&
           runtimeType == other.runtimeType &&
           id == other.id &&
+          isScoped == other.isScoped &&
+          scopedUsers == other.scopedUsers &&
           subType == other.subType &&
           createdBy == other.createdBy &&
           createdOn == other.createdOn &&
@@ -53,6 +63,8 @@ class ExpenseTypeSubType {
   @override
   String toString() {
     return '''ExpenseTypeSubType { id: $id, 
+      isScoped: $isScoped,
+      scopedUsers: $scopedUsers,
       subType: $subType 
       createdBy: $createdBy 
       createdOn: $createdOn 
@@ -63,6 +75,8 @@ class ExpenseTypeSubType {
   ExpenseTypeSubTypeEntity toEntity() {
     return ExpenseTypeSubTypeEntity(
         id,
+        isScoped,
+        scopedUsers,
         subType,
         createdBy,
         createdOn,
@@ -74,6 +88,8 @@ class ExpenseTypeSubType {
   static ExpenseTypeSubType fromEntity(ExpenseTypeSubTypeEntity entity) {
     return ExpenseTypeSubType(
       entity.id,
+      entity.isScoped,
+      entity.scopedUsers,
       entity.subType,
       entity.createdBy,
       entity.createdOn,

@@ -3,6 +3,8 @@ import 'package:equatable/equatable.dart';
 
 class ExpenseTypeSubTypeEntity extends Equatable {
   final String id;
+  final bool isScoped;
+  final List<String> scopedUsers;
   final String subType;
   final String createdBy;
   final DateTime createdOn;
@@ -11,6 +13,8 @@ class ExpenseTypeSubTypeEntity extends Equatable {
 
   const ExpenseTypeSubTypeEntity(
     this.id,
+    this.isScoped,
+    this.scopedUsers,
     this.subType,
     this.createdBy,
     this.createdOn,
@@ -21,6 +25,8 @@ class ExpenseTypeSubTypeEntity extends Equatable {
   @override
   List<Object> get props => [
     id,
+    isScoped,
+    scopedUsers,
     subType,
     createdBy,
     createdOn,
@@ -31,7 +37,9 @@ class ExpenseTypeSubTypeEntity extends Equatable {
   @override
   String toString() {
     return '''ExpenseTypeSubTypeEntity { id: $id, 
-    subType: $subType , 
+    isScoped: $isScoped,
+    scopedUsers: $scopedUsers,
+    subType: $subType, 
     createdBy: $createdBy,
     createdOn: $createdOn, 
     modifiedBy: $modifiedBy,  
@@ -41,6 +49,8 @@ class ExpenseTypeSubTypeEntity extends Equatable {
     Map<String, Object> toJson() {
     return {
       "id": id,
+      "isScoped": isScoped,
+      "scopedUsers": scopedUsers,
       "subType": subType,
       "createdBy": createdBy,
       "createdOn": createdOn,
@@ -52,6 +62,8 @@ class ExpenseTypeSubTypeEntity extends Equatable {
   static ExpenseTypeSubTypeEntity fromJson(Map<String, Object> json) {
     return ExpenseTypeSubTypeEntity(
       json["id"] as String,
+      json["isScoped"] as bool,
+      json["scopedUsers"] as List<String>,
       json["subType"] as String,
       json["createdBy"] as String,
       json["createdOn"] as DateTime,
@@ -63,6 +75,8 @@ class ExpenseTypeSubTypeEntity extends Equatable {
   static ExpenseTypeSubTypeEntity fromSnapshot(DocumentSnapshot snap) {
     return ExpenseTypeSubTypeEntity(
       snap.id,
+      snap['isScoped'],
+      snap['scopedUsers'],
       snap['subType'],
       snap['createdBy'],
       snap['createdOn'],
@@ -73,6 +87,8 @@ class ExpenseTypeSubTypeEntity extends Equatable {
 
   Map<String, Object> toDocument() {
     return {
+      "isScoped": isScoped,
+      "scopedUsers": scopedUsers,
       "subType": subType,
       "createdBy": createdBy,
       "createdOn": createdOn,
