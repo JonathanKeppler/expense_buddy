@@ -25,7 +25,7 @@ class ExpenseType {
 
   ExpenseType copyWith(
       {String id,
-      Bool isScoped,
+      bool isScoped,
       String type,
       List<String> scopedUsers,
       String createdBy,

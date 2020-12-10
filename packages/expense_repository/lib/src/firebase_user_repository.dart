@@ -8,17 +8,17 @@ class FirebaseUserRepository implements UserRepository {
 
   @override
   Future<void> addUser(User user) {
-    return expenseCollection.add(expense.toEntity().toDocument());
+    return userCollection.add(user.toEntity().toDocument());
   }
 
   @override
   Future<void> removeUser(User user) {
-    return expenseCollection.doc(expense.id).delete();
+    return userCollection.doc(user.id).delete();
   }
 
   @override
   Future<void> updateUser(User user) {
-    return expenseCollection.doc(expense.id).update(expense.toEntity().toDocument());
+    return userCollection.doc(user.id).update(user.toEntity().toDocument());
   }
   
   @override

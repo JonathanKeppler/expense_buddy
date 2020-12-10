@@ -95,7 +95,7 @@ class User {
       entity.id,
       entity.email,
       entity.firstName,
-      entity.lastName
+      entity.lastName,
       entity.linkedUsers,
       entity.createdBy,
       entity.createdOn,
