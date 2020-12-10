@@ -55,7 +55,11 @@ class Expense {
         modifiedOn ?? this.modifiedOn);
   }
 
-//TODO: Hashcode?
+  @override
+  int get hashCode =>
+    id.hashCode ^ cost.hashCode ^ expenseType.hashCode ^ expenseTypeSubType.hashCode ^ incurredOn.hashCode ^
+      location.hashCode ^ scopedUsers.hashCode ^ createdBy.hashCode ^ createdOn.hashCode ^
+      modifiedBy.hashCode ^ modifiedOn.hashCode;
 
   @override
   bool operator ==(Object other) =>

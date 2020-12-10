@@ -47,7 +47,10 @@ class User {
         modifiedOn ?? this.modifiedOn);
   }
 
-//TODO: Hashcode?
+  @override
+  int get hashCode =>
+    id.hashCode ^ email.hashCode ^ firstName.hashCode ^ lastName.hashCode ^ linkedUsers.hashCode ^
+      createdBy.hashCode ^ createdOn.hashCode ^ modifiedBy.hashCode ^ modifiedOn.hashCode;
 
   @override
   bool operator ==(Object other) =>

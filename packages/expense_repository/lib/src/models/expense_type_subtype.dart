@@ -44,7 +44,10 @@ class ExpenseTypeSubType {
     );
   }
 
-//TODO: Hashcode?
+  @override
+  int get hashCode =>
+    id.hashCode ^ isScoped.hashCode ^ scopedUsers.hashCode ^ subType.hashCode ^ createdBy.hashCode ^
+      createdOn.hashCode ^ modifiedBy.hashCode ^ modifiedOn.hashCode;
 
   @override
   bool operator ==(Object other) =>
