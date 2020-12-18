@@ -72,3 +72,17 @@ class _AppViewState extends State<AppView> {
     );
   }
 }
+
+
+// import 'package:authentication_repository/authentication_repository.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:expense_buddy/authentication/authentication.dart';
+// import 'package:expense_buddy/home/home.dart';
+// import 'package:expense_buddy/login/login.dart';
+// import 'package:expense_buddy/splash/splash.dart';
+// import 'package:expense_buddy/theme.dart';
+
+// class ExpenseBuddyApp extends StatelessWidget {
+
+// }
