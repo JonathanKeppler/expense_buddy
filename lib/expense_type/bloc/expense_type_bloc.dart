@@ -40,19 +40,19 @@ class ExpenseTypeBloc extends Bloc<ExpenseTypeEvent, ExpenseTypeState> {
   }
 
   Stream<ExpenseTypeState> _mapAddExpenseTypeEventToState(AddExpenseTypeEvent event) async* {
-    _expenseTypeRepository.addExpenseType(event.expense);
+    _expenseTypeRepository.addExpenseType(event.expenseType);
   }
 
   Stream<ExpenseTypeState> _mapUpdateExpenseTypeEventToState(UpdateExpenseTypeEvent event) async* {
-    _expenseTypeRepository.updateExpenseType(event.expense);
+    _expenseTypeRepository.updateExpenseType(event.expenseType);
   }
 
   Stream<ExpenseTypeState> _mapRemoveExpenseTypeEventToState(RemoveExpenseTypeEvent event) async* {
-    _expenseTypeRepository.removeExpenseType(event.expense);
+    _expenseTypeRepository.removeExpenseType(event.expenseType);
   }
 
   Stream<ExpenseTypeState> _mapExpenseTypesUpdatedEventToState(ExpenseTypesUpdatedEvent event) async* {
-    yield ExpenseTypesLoadedState(event.expenses);
+    yield ExpenseTypesLoadedState(event.expenseTypes);
   }
 
   @override

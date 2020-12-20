@@ -10,47 +10,47 @@ abstract class ExpenseTypeEvent extends Equatable {
 class LoadExpenseTypesEvent extends ExpenseTypeEvent {}
 
 class AddExpenseTypeEvent extends ExpenseTypeEvent {
-  final ExpenseType expense;
+  final ExpenseType expenseType;
 
-  const AddExpenseTypeEvent(this.expense);
+  const AddExpenseTypeEvent(this.expenseType);
   
   @override
-  List<Object> get props => [expense];
+  List<Object> get props => [expenseType];
 
-  @override toString() => 'AddExpenseEvent { expense: $expense }';
+  @override toString() => 'AddExpenseTypeEvent { expense: $expenseType }';
 }
 
 class UpdateExpenseTypeEvent extends ExpenseTypeEvent {
-  final ExpenseType expense;
+  final ExpenseType expenseType;
 
-  const UpdateExpenseTypeEvent(this.expense);
-
-  @override
-  List<Object> get props => [expense];
+  const UpdateExpenseTypeEvent(this.expenseType);
 
   @override
-  toString() => 'UpdateExpenseEvent { expense: $expense }';
+  List<Object> get props => [expenseType];
+
+  @override
+  toString() => 'UpdateExpenseTypeEvent { expense: $expenseType }';
 }
 
 class RemoveExpenseTypeEvent extends ExpenseTypeEvent {
-  final ExpenseType expense;
+  final ExpenseType expenseType;
 
-  const RemoveExpenseTypeEvent(this.expense);
-
-  @override
-  List<Object> get props => [expense];
+  const RemoveExpenseTypeEvent(this.expenseType);
 
   @override
-  toString() => 'RemoveExpenseEvent { expense: $expense }';
+  List<Object> get props => [expenseType];
+
+  @override
+  toString() => 'RemoveExpenseTypeEvent { expense: $expenseType }';
 }
 
 class ExpenseTypesUpdatedEvent extends ExpenseTypeEvent {
-  final List<ExpenseType> expenses;
+  final List<ExpenseType> expenseTypes;
 
-  const ExpenseTypesUpdatedEvent(this.expenses);
+  const ExpenseTypesUpdatedEvent(this.expenseTypes);
 
   @override
-  List<Object> get props => [expenses];
+  List<Object> get props => [expenseTypes];
 }
 
 

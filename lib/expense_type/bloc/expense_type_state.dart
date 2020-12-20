@@ -10,15 +10,15 @@ abstract class ExpenseTypeState extends Equatable {
 class ExpenseTypesLoadingState extends ExpenseTypeState {}
 
 class ExpenseTypesLoadedState extends ExpenseTypeState {
-  final List<ExpenseType> expenses;
+  final List<ExpenseType> expenseTypes;
 
-  const ExpenseTypesLoadedState([this.expenses = const []]);
-
-  @override
-  List<Object> get props => [expenses];
+  const ExpenseTypesLoadedState([this.expenseTypes = const []]);
 
   @override
-  toString() => 'ExpenseTypesLoadedState { expenses: $expenses }';
+  List<Object> get props => [expenseTypes];
+
+  @override
+  toString() => 'ExpenseTypesLoadedState { expenseTypes: $expenseTypes }';
 }
 
 class ExpenseTypesNotLoadedState extends ExpenseTypeState {}

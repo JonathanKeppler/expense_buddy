@@ -33,9 +33,9 @@ class AuthenticationRepository {
   ///
   /// Emits [User.empty] if the user is not authenticated.
   
-  Stream<User> get user {
+  Stream<AuthUser> get authUser {
     return _firebaseAuth.authStateChanges().map((firebaseUser) {
-      return firebaseUser == null ? User.empty : firebaseUser.toUser;
+      return firebaseUser == null ? AuthUser.empty : firebaseUser.toAuthUser;
     });
   }
 
@@ -109,7 +109,7 @@ class AuthenticationRepository {
 }
 
 extension on firebase_auth.User {
-  User get toUser {
-    return User(id: uid, email: email, name: displayName, photo: photoURL);
+  AuthUser get toAuthUser {
+    return AuthUser(id: uid, email: email, name: displayName, photo: photoURL);
   }
 }

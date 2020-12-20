@@ -1,13 +1,25 @@
 import 'dart:async';
 
 import 'models/models.dart';
+import 'package:authentication_repository/authentication_repository.dart';
 
 abstract class ExpenseTypeSubTypeRepository {
-  Future<void> addExpenseTypeSubType(ExpenseTypeSubType expenseTypeSubType, String parentDoc);
+  Future<void> addExpenseTypeSubType(
+    AuthUser authUser,
+    ExpenseType expenseType,
+    ExpenseTypeSubType expenseTypeSubType);
 
-  Future<void> removeExpenseTypeSubType(ExpenseTypeSubType expenseTypeSubType, String parentDoc);
+  Future<void> removeExpenseTypeSubType(
+    AuthUser authUser,
+    ExpenseType expenseType,
+    ExpenseTypeSubType expenseTypeSubType);
 
-  Future<void> updateExpenseTypeSubType(ExpenseTypeSubType expenseTypeSubType, String parentDoc);
+  Future<void> updateExpenseTypeSubType(
+    AuthUser authUser,
+    ExpenseType expenseType,
+    ExpenseTypeSubType expenseTypeSubType);
 
-  Stream<List<ExpenseTypeSubType>> expenseTypeSubTypes(String parentDoc);
+  Stream<List<ExpenseTypeSubType>> expenseTypeSubTypes(
+    AuthUser authUser,
+    ExpenseType expenseType);
 }

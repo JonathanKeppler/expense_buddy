@@ -15,13 +15,13 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   })  :assert(authenticationRepository != null),
       _authenticationRepository = authenticationRepository,
       super(const AuthenticationState.unknown()) {
-        _userSubscription = _authenticationRepository.user.listen(
+        _userSubscription = _authenticationRepository.authUser.listen(
           (user) => add(AuthenticationUserChanged(user)),
         );
       }
 
   final AuthenticationRepository _authenticationRepository;
-  StreamSubscription<User> _userSubscription;
+  StreamSubscription<AuthUser> _userSubscription;
 
   @override
   Stream<AuthenticationState> mapEventToState(
@@ -43,8 +43,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   AuthenticationState _mapAuthenticationUserChangedToState(
     AuthenticationUserChanged event,
   ) {
-    return event.user != User.empty
-      ? AuthenticationState.authenticated(event.user)
+    return event.authUser != AuthUser.empty
+      ? AuthenticationState.authenticated(event.authUser)
       : const AuthenticationState.unauthenticated();
   }
 }
